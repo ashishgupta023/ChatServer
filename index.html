@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Chat-O</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  </head>
+  <body style="background-color:#eee">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="text-center">Welcome to Chat-O <small>One place for all</small></h3>
+          <div class="row" style="padding:20px">
+            <div class="col-md-4">
+              <button id="idChatRoomButton" class="btn btn-danger btn-sm" type="button" data-toggle="collapse" data-target="#collapseRooms" aria-expanded="false" aria-controls="collapseRooms">
+              Show available chat rooms 
+              </button>
+              <button id="idAddChatRoomButton" class="btn btn-danger btn-sm" type="button" data-toggle="collapse" data-target="#addRooms" aria-expanded="false" aria-controls="addRooms">
+              Add Chat Room 
+              </button>
+                <div class="collapse well" id="addRooms">
+                  <b style="font-size:11px">Add a room here</b>
+                  <form id="newRoomSubmit" class="form-inline">
+                    <div class="form-group">
+                      <label for="newRoom">Room</label>
+                      <input type="text" required="true" class="form-control" id="newRoom" placeholder="Adding a new Fort?">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                  </form>
+                </div>
+              <div class="collapse" id="collapseRooms">
+                <b style="font-size:11px"> Showing Available Chat Rooms(Press button again to refresh) </b>
+              <div class="well">
+                <ul id="idChatRoomList">
+                </ul>
+              </div>
+                <h4 ><span class="label label-primary" id="userRoom"></span></h4>
+
+                <h4 ><span class="label label-primary" id="userPrivateChat"></span></h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+
+             <div id="privateChatModal" class="modal fade" tabindex="-1" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">A fellow from gryffindor wants to chat with you</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p id="privateChatRequest"></p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Duh,I like Slytherins!</button>
+                    <button type="button" id="acceptRequestButton" class="btn btn-primary">I love gryffindor!</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+              <div id="myModal" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">A door does not unlock without the key...</h4>
+                    </div>
+                    <div class="modal-body">
+                      <form id="enterLoginNameForm"  style="padding:30px" >
+                        <div class="form-group">
+                          <label for="loginName">Login with a nickname</label>
+                          <div id="nameExistsId" class="alert alert-warning alert-dismissible hidden" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>The house of elrond apologizes!</strong> That name seems to be taken!! </div>
+
+                          <input type="message" class="form-control" id="loginName" placeholder="Are you Ara.....gorn?" />
+                        </div>
+                        <button type="submit" class="btn btn-primary pull-right">Enter Chat-O</button>
+
+                      </form>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+              <div id="refresh" class="alert alert-warning alert-dismissible" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Refreshing the window will log you out !! </div>
+
+              <textarea style="border-color:#4f9fcf; font-size:11px; font-style:bold" class="form-control" id="messages" rows="16" readonly="true" placeholder="No messages yet"></textarea>
+              <form id="sendMessageForm"  style="padding:30px" >
+                
+                <h4 ><span class="label label-primary" id="userLoggedIn"></span></h4>
+
+                <div class="form-group">
+                  <label for="messageByUser">Message</label>
+                  <input type="message" class="form-control" id="messageByUser" placeholder="Start Typing....">
+                </div>
+                <button type="submit" class="btn btn-success pull-right">Send</button>
+              </form>
+
+              <div class="row">
+
+                 <div class="col-md-4" style="margin-left:50px ;margin-top:50px">
+                        <img src="images/node.png" alt="NodeJS" width="120px" height="60px" class="img-responsive img-circle">
+                        <img src="images/socketio.png" alt="SocketIO" width="120px" height="60px" class="img-responsive img-circle">
+                  </div>
+
+                  <div class="col-md-4" style="margin-left:50px ; margin-top:50px">
+      
+                        <img src="images/bootstrap.png" alt="Bootstrap" width="120px" height="60px" class="img-responsive img-circle">
+                        <img src="images/jquery.png" alt="jQuery" width="120px" height="60px" class="img-responsive img-circle">
+                </div>
+              </div>
+            </div>
+             <div class="col-md-4">
+                <h4 ><span style="margin-bottom:20px" class="label label-primary" id="totalUsersOnline"></span></h4>
+                <div id="usersDiv" class="hidden">
+                 <h4 ><span style="margin-bottom:20px" class="label label-primary" id="totalUsersOnline">Available users in chat room</span></h4>
+                  <div class="collapse" id="collapseUsers">
+                    <div class="well">
+                      <ul id="idUserList">
+                      </ul>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>  
+    </div>
+
+
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+      socket = io();
+
+      $('#acceptRequestButton').click(function(){
+
+          $("#privateChatModal").modal('hide');
+
+          acceptPrivateChat(acceptUser);
+
+      });
+
+
+      $("#newRoomSubmit").submit(function(){
+        var roomId = $("#newRoom").val();
+        if(roomId)
+        {
+          $('#addRooms').collapse('hide');
+          $("#newRoom").css('border-color','none');
+          socket.emit('addRoom',roomId);
+        }
+        else
+        {
+            $("#newRoom").css('border-color','red');
+        }
+        return false;
+      });
+
+
+      $('#sendMessageForm').submit(function(){
+        socket.emit('chatMessage', $('#messageByUser').val());
+        $('#messageByUser').val('');
+        return false;
+      });
+
+      $('#idChatRoomButton').click(function(){
+        socket.emit('getRooms', '/rooms');
+        return false;
+        });
+
+
+      $("#loginName").focus(function(){
+        $("#loginName").css('border-color','');
+      });
+
+      $('#enterLoginNameForm').submit(function(){
+        userName = $('#loginName').val();
+        if(userName)
+        {
+          socket.emit('newUser', userName);
+          $('#loginName').val('');
+          $("#userLoggedIn").html("Logged in as: " + userName);
+          return false;
+        }
+        else
+        {
+          $("#loginName").css('border-color','red');
+          return false;
+        }
+      });
+
+      // Incoming data
+      socket.on('httpConnection', function(msg){
+
+        if(msg.indexOf("=>")!= -1)
+        {
+          msg = msg.substring(0,msg.indexOf("=>"));
+        }
+
+        $('#messages').append(msg + "\n");
+        messsagesArea = document.getElementById('messages');
+        messsagesArea.scrollTop = messsagesArea.scrollHeight;
+
+
+        if(msg.indexOf("<= Sorry, name taken") != -1)
+        {
+          $("#userLoggedIn").html("");
+          $("#loginName").css('border-color','red');
+          $("#nameExistsId").removeClass('hidden');
+        }
+        else
+        {
+          $('#myModal').modal('hide');
+        }
+        
+        if(msg.indexOf("<= Entering room") != -1)
+        {
+          msg = msg.replace("end of list.","");
+          var msgSplit = msg.split("<=");
+
+          var items = [];
+
+          $.each(msgSplit, function(i, item) {
+
+                  item = item.trim();
+                  if(item && item.length != 0)
+                  {
+                    if(item.indexOf('Entering room') == -1)
+                    {
+                      if(item.indexOf('(') == -1)
+                      {
+                        var val = item.replace("*" , "");
+                        items.push('<li>Request Private Chat <a style="margin:10px" class="btn btn-success btn-xs" href="#" role="button" onclick="requestPrivateChat(this.text)">' + val + '</a></li>');
+                      }
+                    }
+                  }
+           });  
+
+           $('#idUserList').html( items.join('') ); 
+           $('#collapseUsers').collapse('show');
+
+        }
+
+        if(/.*<= .* is requesting a private chat.*/.test(msg) == true) 
+        {
+              msgSplit = msg.split(" ");
+              acceptUser = msgSplit[1].trim();
+              $("#privateChatRequest").html('<b>' + acceptUser + "</b> is requesting a private chat...");
+              $("#privateChatModal").modal('show');
+        }
+
+        if(/.*<= .* accepted your private chat request.*/.test(msg) == true) 
+        {
+              msgSplit = msg.split(" ");
+              acceptUser = msgSplit[1].trim();
+              updatePrivateChat();
+        }
+
+        if(/.*<= .* private chat ended..*/.test(msg) == true) 
+        {
+              $("#userPrivateChat").html('');
+        }
+
+        if(/.*<= .*new user joined room.*/.test(msg) == true) 
+        {
+              newUser = msg.split(":")[1].trim();
+              item = '<li>Request Private Chat <a style="margin:10px" class="btn btn-success btn-xs" href="#" role="button" onclick="requestPrivateChat(this.text)">' + newUser + '</a></li>';  
+
+              $('#idUserList').html( $('#idUserList').html() + item );
+              
+        }
+
+        if(msg.indexOf("<= Active chat")!= -1)
+        {
+          
+          msg = msg.replace("end of list.","");
+          
+          var msgSplit = msg.split("<=");
+          var items = [];
+
+          $.each(msgSplit, function(i, item) {
+
+                  if(item && item.length != 0)
+                  {
+                    if(item.indexOf('Active chat rooms') == -1)
+                    {
+                      if(item.indexOf('(') != -1)
+                      {
+                        var val = item.replace("*" , "");
+                        items.push('<li>Join <a style="margin:10px" class="btn btn-success btn-sm" href="#" role="button" onclick="joinRoom(this.text)">' + val + '</a></li>');
+                      }
+                    }
+                  }
+
+
+           });  
+
+           $('#idChatRoomList').html( items.join('') ); 
+           $('#collapseRooms').collapse('show');
+        }
+
+
+        if(msg.indexOf("<= Welcome") != -1)
+        {
+          var msgSplit = msg.split('<=');
+          $("#totalUsersOnline").html(msgSplit[2].replace("=>",""));
+        }
+
+        var loggedIn = $("#userLoggedIn").html();
+        if(!loggedIn || loggedIn == null || loggedIn.length == 0 )
+        {
+          $('#myModal').modal('show');
+          $("#loginName").focus();
+        }
+
+      });
+    
+      function leave()
+      {
+          socket.emit('leave' , '/leave');
+          var up = $("#userPrivateChat").html();
+          if(up)
+          {
+              $("#userPrivateChat").html('');
+          }
+          else
+          {
+            $("#userRoom").html('');
+            $('#collapseUsers').collapse('hide');
+          }
+      }
+
+      function joinRoom(room)
+      {
+          room = room.substring(0,room.indexOf('('));
+          var roomVal = $("#userRoom").html();      
+          if(!roomVal)
+          {
+             roomVal = roomVal + '<a style="margin:10px" class="btn btn-success btn-xs" href="#" role="button" onclick="leave()">Leave</a>';
+    
+             $("#userRoom").html('In Room :' +room + roomVal);
+             $("#usersDiv").removeClass('hidden');
+          }
+          socket.emit('joinRoom' , '/join '+room.trim());
+      }
+
+      function requestPrivateChat(user)
+      {
+          user = user.trim();
+          if(user)
+          {
+              socket.emit('requestPrivate' , user);
+          }
+      }
+
+      function acceptPrivateChat(user)
+      {
+          user = user.trim();
+          if(user)
+          {
+              updatePrivateChat();
+              socket.emit('acceptPrivate' , user);
+          }
+      }
+
+      function updatePrivateChat()
+      {
+         var userPrChat = $("#userPrivateChat").html();      
+            if(!userPrChat)
+            {
+              userPrChat = userPrChat + '<a style="margin:10px" class="btn btn-success btn-xs" href="#" role="button" onclick="leave()">Leave</a>';
+    
+                $("#userPrivateChat").html('In Private chat with :' +acceptUser + userPrChat);
+            }
+      }
+    </script>
+  </body>
+</html>
