@@ -322,7 +322,7 @@ function receiveData(socket, data)
      var i = sockets.indexOf(socket);
      if(i != -1)
      {
-        if(userStates[i] == 1) // Join a chat room only is user is registered with a name
+        if(userStates[i] == 1) // Join a chat room only if user is registered with a name
         {
           if(!chatRoomsMap.has(toJoin))
           {
