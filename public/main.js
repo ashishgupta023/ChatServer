@@ -1,5 +1,6 @@
 socket = io();
 
+
 $('#acceptRequestButton').click(function(){
 
     $("#privateChatModal").modal('hide');

@@ -519,18 +519,35 @@ function cleanInput(data) {
 }
 /* --------------------------------------------HTTP Server------------------------------------------------------ */
 // HTTP server serving a web client
+//SetUp Authentication
 
+
+var auth = require('http-auth');
+var basic = auth.basic({
+        realm: "Westeros"
+    }, function (username, password, callback) { 
+        callback(username === "gollum" && password === "myprecious");
+    }
+);
+
+//App Setup
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io').listen(http);
 var HTTP_PORT = 3000;
 
+console.log(__dirname);
 app.use(express.static(__dirname + '/public'));
+app.use(auth.connect(basic));
 
 
 app.get('/', function(req, res){
    res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/howto', function(req, res){
+   res.sendFile(__dirname + '/commands.html');
 });
 
 io.on('connection', function(socket){

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Chat-O</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  </head>
+  <body style="background-color:#eee">
+
+  <div class="container-fluid">
+  <div class="row">  
+  <div class="col-md-12">
+  <h3 class="text-center">Welcome to Chat-O <small>One place for all</small></h3>
+  <h4 class="text-center">How to use the TCP client</h4>
+
+  <div class="row">
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          /rooms
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        Shows all the currently available chatroom names. 5 chat rooms are available by default by the chat server.<br/><br/>
+        Example : /rooms
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        /join [room-name]
+          </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        Use this to join a particular room. Room name is mandatory. 
+        <br/><br/>
+        Example: /join chat
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          /addroom [room-name]
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+      Use this to add a new chat room. Room name is mandatory. 
+      <br/><br/>
+      Example: /addroom mordor 
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          /private [user-name]
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        If you are in a chat room, you can request a private chat with one of the members of the chat room.
+        User name is mandatory. Private chat is not available outside chat room.   
+        <br/><br/>
+        Example: /private gandalf
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          /accept [user-name]
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        The user receives a notification when somebody requests a private chat with them.
+        Use this command to accept the invitation to go in a private chat dialogue.User name is mandatory. 
+        <br/><br/>Example: /accept sauron
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          /leave
+        </a>
+      </h4>
+    </div>
+    <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        Use this to leave a chat room or when you are in a private conversation.
+        If you are in a private conversation, this ends the private chat and takes you back to the room you were in. If you are in a chat room , takes you out of the chat room . 
+
+        <br/><br/>
+        Example: /leave  
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          /quit
+        </a>
+      </h4>
+    </div>
+    <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        Leave the chat !!
+        <br/><br/>
+        Example: /quit  
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="main.js"></script>
+  </body>
+</html>
