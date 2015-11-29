@@ -541,6 +541,7 @@ io.on('connection', function(socket){
   tcpClient.setKeepAlive(true);
 
   //Conect to TCP Server
+  // HTTP Tunneling
   tcpClient.connect(PORT, HOST, function() 
   {
         tcpClient.on('data', function(data) {
