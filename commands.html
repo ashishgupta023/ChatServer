@@ -40,6 +40,7 @@
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
         Use this to join a particular room. Room name is mandatory. No spaces allowed.
+        A user in a chat room will receive messages from all users which includes the user in his current chat room , however the messages send by him will only be send to users in the current chat room.
         <br/><br/>
         Example: /join chat
       </div>
@@ -72,7 +73,7 @@
     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="panel-body">
         If you are in a chat room, you can request a private chat with one of the members of the chat room.
-        User name is mandatory. Private chat is not available outside chat room. If the request is not accepted within 20 seconds, the request is timed out.   
+        User name is mandatory. Private chat is not available outside chat room. If the request is not accepted within 20 seconds, the request is timed out. Person in a private chat will receive messages only from the user in the private chat dialogue.   
         <br/><br/>
         Example: /private gandalf
       </div>
@@ -89,7 +90,8 @@
     <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="panel-body">
         The user receives a notification when somebody requests a private chat with them.
-        Use this command to accept the invitation to go in a private chat dialogue.User name is mandatory. 
+        Use this command to accept the invitation to go in a private chat dialogue.User name is mandatory.
+        Person in a private chat will receive messages only from the user in the private chat dialogue.    
         <br/><br/>Example: /accept sauron
       </div>
     </div>
